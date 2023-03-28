@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  ex2websvelte:
+    container_name: ex2_web_svelte
+    image: ${DOCKER_REGISTRY-}ex2.web.svelte
+    restart: "no"
+    build:
+      context: ex2-svelte
+      dockerfile: Dockerfile
+    ports:
+      - 5326:3000
+    environment:
+      - PORT=3000
