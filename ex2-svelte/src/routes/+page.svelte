@@ -1,11 +1,12 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import UserDetailDisplay from "../components/UserDetailDisplay.svelte";
+    import UserTableDetailDisplay from "../components/UserTableDetailDisplay.svelte";
+    import TiArrowRight from "svelte-icons/ti/TiArrowRight.svelte";
     import type { User } from "../types/User";
     import "./tableStyles.css";
+    import { userStore } from "../stores/userDataStore";
 
-    export let data: any;
-    let userList: User[] = data.userArray;
+    let userList: User[] = $userStore;
 
     let selectedId: number | null = 1;
     let lastSelectedDivId: string | undefined;
@@ -29,6 +30,10 @@
         lastSelectedDivId = elem?.id;
     }
 </script>
+
+<svelte:head>
+    <title>Exaple 2</title>
+</svelte:head>
 
 <main class="content">
     <table>
@@ -56,7 +61,7 @@
                     <tr class="row-detail">
                         <td colspan="4">
                             <div class="row-detail-content">
-                                <UserDetailDisplay {user} />
+                                <UserTableDetailDisplay {user} />
                             </div>
                         </td>
                     </tr>

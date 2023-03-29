@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { goto } from "$app/navigation";
     import type { User } from "../types/User";
 
     export let user: User;
@@ -42,11 +43,28 @@
             </div>
         </div>
     </div>
+
+    <div class="buttons-container">
+        <a href="/{user.id}" target="_blank">Otevřít v novém okně</a>
+    </div>
 </div>
 
 <style>
+    a{
+color: black;
+    }
+
     .container {
         display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .buttons-container {
+        display: flex;
+        justify-content: end;
+        margin: 0px 40px;
     }
 
     .card img {
@@ -58,7 +76,7 @@
     .card {
         width: 160px;
         height: 200px;
-        border-radius: 10px;
+        border-radius: 28px;
         border: 1px solid black;
         overflow: hidden;
     }

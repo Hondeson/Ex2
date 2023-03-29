@@ -1,11 +1,9 @@
-import { error } from '@sveltejs/kit';
+import { writable } from "svelte/store";
+import type { User } from "../types/User";
 
-export const load = () => {
-    const data = getDataFromDatabase();
-    return { userArray: data }
-};
+const userStore = writable(getDataFromDatabase());
 
-const getDataFromDatabase = () => {
+function getDataFromDatabase(): User[] {
     const arr = [];
 
     let id = 1;
@@ -26,3 +24,5 @@ const getDataFromDatabase = () => {
     
     return arr;
 }
+
+export { userStore }
